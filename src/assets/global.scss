@@ -1,0 +1,27 @@
+@import './color.scss'; 
+
+@mixin thin-scrollbar {
+  $scrollbar-w: 9px;
+  $scrollbar-h: 6px;
+
+  /* 调整滚动条样式 */
+  &::-webkit-scrollbar {
+      width: $scrollbar-w;
+      height: $scrollbar-h;
+      // background-color: rgb(247, 247, 247);
+  }
+  &::-webkit-scrollbar-thumb:vertical {
+    width: $scrollbar-w;
+    height: $scrollbar-h;
+    background-color: rgb(64, 151, 191);
+    border-radius: 8px;
+  }
+}
+
+.thin-scrollbar {
+  @include thin-scrollbar;
+}
+
+.v-contextmenu-item {
+  cursor: pointer;
+}

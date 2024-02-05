@@ -1,0 +1,34 @@
+$colors-map: (
+  /* 蓝色 */
+  'yunShui': #b4d9ef,  /* 云水 */
+  'xingLi': #78bbdd,   /* 星黎 */
+  'jiQing': #63bbd0,   /* 霁青 */
+  'qingShan': #8FB2C9, /* 晴山 */
+  'qiuBo': #8ABCD1,    /* 秋波 */
+  'yuanWei': #158BB8,  /* 鸢尾 */
+
+  /* 灰色 */
+  'maNao': #cfccc9,    /* 玛瑙 */
+  'xiaoHui': #d4c4b7,  /* 晓灰 */
+  'xingHui': #b2bbbe,  /* 星灰 */
+  'jingYu': #475164,   /* 鲸鱼 */
+  'changShi': #363433, /* 长石 */
+
+  /* 白色 */
+  'qianShi': #e2e1e4,  /* 芡食 */
+  'yinYu': #cdd1d3,    /* 银鱼 */
+  'yunFeng': #d8e5e7,  /* 云峰 */
+  'baiYu': #f8f4ed,    /* 白玉 */
+  'ruBai': #f9f4dc,    /* 乳白 */
+  'bangRou': #f9f1db,  /* 蚌肉 */
+);
+
+/* 批量生成 */
+@each $key, $colorValues in $colors-map {
+  .bg_#{$key} {
+    background: $colorValues;
+  }
+  .text_#{$key} {
+    color: $colorValues;
+  }
+}
