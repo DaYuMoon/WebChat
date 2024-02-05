@@ -4,6 +4,7 @@
 
 ---
 
+
 ## 安装
 
 ### 前端
@@ -38,6 +39,11 @@ yarn install
 # 启动 (或者使用 pm2 进行托管)
 node app.js
 ```
+
+---
+
+## 图示
+![图](./example/sample.png)
 
 ---
 
