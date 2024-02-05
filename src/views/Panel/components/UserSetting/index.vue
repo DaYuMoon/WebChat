@@ -105,10 +105,16 @@ const unwatch = watch(isHintSetting, (val) => {
         </ElFormItem>
       </ElForm>
 
-      <span slot="footer" class="dialog-footer">
-        <el-button size="medium" @click="dialogVisible = false">关闭</el-button>
-        <el-button size="medium" type="primary" @click="confirm">确认修改</el-button>
-      </span>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button size="medium" @click="dialogVisible = false">
+            关闭
+          </el-button>
+          <el-button size="medium" type="primary" @click="confirm">
+            确认修改
+          </el-button>
+        </div>
+      </template>
     </ElDialog>
   </div>
 </template>

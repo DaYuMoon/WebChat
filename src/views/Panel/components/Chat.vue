@@ -1,7 +1,7 @@
 <!--
  * @Description:
  * @Date: 2022-08-06 15:23:36
- * @LastEditTime: 2024-01-11 10:09:08
+ * @LastEditTime: 2024-02-05 11:12:26
 -->
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, ref, toRefs, watch, watchEffect } from 'vue'
@@ -381,7 +381,7 @@ function dragoverHandler(e: DragEvent) {
         ref="emojiPickerRefs"
         class="slow-open absolute left-1"
         style="bottom: 105%"
-        @handleClick="outputEmoji"
+        @handle-click="outputEmoji"
       />
 
       <!-- 聊天输入框功能栏 start -->

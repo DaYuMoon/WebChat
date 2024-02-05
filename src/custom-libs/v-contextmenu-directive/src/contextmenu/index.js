@@ -11,33 +11,35 @@ const contextmenuListener = ({ el, event, binding }) => {
   let instance, mask
 
   const menus = binding.value(el)
-  if(!menus) return
+  if (!menus)
+    return
 
   const isDark = binding.modifiers.dark
 
   const removeContextMenu = () => {
-    if(instance) {
+    if (instance) {
       document.body.removeChild(instance.$el)
       instance = null
     }
-    if(mask) {
+    if (mask) {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       mask.removeEventListener('contextmenu', handleMaskContextmenu)
       mask.removeEventListener('click', removeContextMenu)
       document.body.removeChild(mask)
       mask = null
     }
     el.classList.remove('contextmenu-active')
-    document.body.removeEventListener('scroll', removeContextMenu)  
+    document.body.removeEventListener('scroll', removeContextMenu)
     window.removeEventListener('resize', removeContextMenu)
   }
 
-  const handleMaskContextmenu = event => {
+  const handleMaskContextmenu = (event) => {
     event.preventDefault()
     removeContextMenu()
   }
 
   removeContextMenu()
-  
+
   mask = document.createElement('div')
   mask.style = `
     position: fixed;
@@ -57,7 +59,7 @@ const contextmenuListener = ({ el, event, binding }) => {
   instance.menus = menus
   instance.isDark = isDark
   instance.removeContextMenu = removeContextMenu
-  
+
   document.body.appendChild(instance.$el)
   el.classList.add('contextmenu-active')
 
@@ -74,7 +76,7 @@ const ContextmenuDirective = {
   },
 
   unbind(el) {
-    if(el && el[__ctxmenu__]) {
+    if (el && el[__ctxmenu__]) {
       el.removeEventListener('contextmenu', el[__ctxmenu__])
       delete el[__ctxmenu__]
     }

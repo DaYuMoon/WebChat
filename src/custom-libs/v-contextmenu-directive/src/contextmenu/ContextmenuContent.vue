@@ -1,35 +1,6 @@
-<template>
-  <ul :class="['v-contextmenu-content', { 'dark': isDark }]">
-    <template v-for="(menu, index) in menus">
-      <li
-        v-if="!menu.hide"
-        class="v-contextmenu-item"
-        :key="menu.text || index"
-        @click.stop="clickMenuItem(menu)"
-        :class="{'divider': menu.divider, 'disable': menu.disable}"
-      >
-        <div class="v-contextmenu-item-content" :class="{'has-sub-menu': menu.children}" v-if="!menu.divider">
-          <span class="text" v-html="menu.text"></span>
-          <span class="sub-text" v-if="menu.subText && !menu.children">{{menu.subText}}</span>
-
-          <v-contextmenu-content 
-            class="sub-menu" 
-            :style="{
-              [subMenuPosition]: '112.5%',
-            }"
-            :menus="menu.children" 
-            v-if="menu.children && menu.children.length"
-            :clickMenuItem="clickMenuItem"
-          />
-        </div>
-      </li>
-    </template>
-  </ul>
-</template>
-
 <script>
 export default {
-  name: 'v-contextmenu-content',
+  name: 'VContextmenuContent',
   props: {
     menus: {
       type: Array,
@@ -50,6 +21,35 @@ export default {
   },
 }
 </script>
+
+<template>
+  <ul class="v-contextmenu-content" :class="[{ dark: isDark }]">
+    <template v-for="(menu, index) in menus">
+      <li
+        v-if="!menu.hide"
+        :key="menu.text || index"
+        class="v-contextmenu-item"
+        :class="{ divider: menu.divider, disable: menu.disable }"
+        @click.stop="clickMenuItem(menu)"
+      >
+        <div v-if="!menu.divider" class="v-contextmenu-item-content" :class="{ 'has-sub-menu': menu.children }">
+          <span class="text" v-html="menu.text" />
+          <span v-if="menu.subText && !menu.children" class="sub-text">{{ menu.subText }}</span>
+
+          <v-contextmenu-content
+            v-if="menu.children && menu.children.length"
+            class="sub-menu"
+            :style="{
+              [subMenuPosition]: '112.5%',
+            }"
+            :menus="menu.children"
+            :click-menu-item="clickMenuItem"
+          />
+        </div>
+      </li>
+    </template>
+  </ul>
+</template>
 
 <style lang="scss" scoped>
 $menuWidth: 170px;

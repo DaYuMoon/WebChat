@@ -1,7 +1,7 @@
 <!--
  * @Description: emoji 表情选择
  * @Date: 2022-08-11 17:12:29
- * @LastEditTime: 2023-02-06 17:30:09
+ * @LastEditTime: 2024-02-05 11:12:19
 -->
 <script lang="ts" setup>
 import { computed, onBeforeMount } from 'vue'
@@ -12,7 +12,7 @@ const emit = defineEmits<{
   /**
    * 触发点击 emoji
    */
-  (e: 'handleClick', emoji: string): string
+  (e: 'handle-click', emoji: string): string
 }>()
 
 onBeforeMount(() => {
@@ -42,7 +42,7 @@ function clickEmoji(emoji: string) {
   store.commit('PUSH_CURRENT_EMOJI', emoji)
   store.dispatch('handleCurrentEmoji', 'set')
 
-  emit('handleClick', emoji)
+  emit('handle-click', emoji)
 }
 </script>
 

@@ -1,9 +1,3 @@
-<template>
-  <div id="app" v-contextmenu.dark="contextmenus">
-    {{msg}}
-  </div>
-</template>
-
 <script>
 export default {
   name: 'App',
@@ -19,10 +13,10 @@ export default {
         {
           text: '删除',
           subText: 'BACKSPACE',
-          action: e => {
+          action: (e) => {
             this.msg = '你点击了删除'
             console.log(e)
-          }
+          },
         },
         {
           text: '禁用菜单项',
@@ -47,23 +41,29 @@ export default {
         {
           text: '剪切',
           subText: 'CTRL + X',
-          action: () => this.msg = '你点击了剪切'
+          action: () => this.msg = '你点击了剪切',
         },
         {
           text: '复制',
           subText: 'CTRL + C',
-          action: () => this.msg = '你点击了复制'
+          action: () => this.msg = '你点击了复制',
         },
         {
           text: '粘贴',
           subText: 'CTRL + V',
-          action: () => this.msg = '你点击了粘贴'
+          action: () => this.msg = '你点击了粘贴',
         },
       ]
-    }
+    },
   },
 }
 </script>
+
+<template>
+  <div id="app" v-contextmenu.dark="contextmenus">
+    {{ msg }}
+  </div>
+</template>
 
 <style lang="scss">
 html, body {

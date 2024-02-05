@@ -1,7 +1,7 @@
 /*
  * @Description:
  * @Date: 2022-07-26 01:43:10
- * @LastEditTime: 2024-01-11 12:17:09
+ * @LastEditTime: 2024-02-05 10:40:14
  */
 import Vue from 'vue'
 // import { Notification } from 'element-ui'
@@ -17,6 +17,8 @@ import '@/assets/global.scss'
 // 引入右键菜单组件
 // import 'v-contextmenu-directive/dist/v-contextmenu-directive.css'
 import '@/custom-libs/v-contextmenu-directive/assets/v-contextmenu-directive.css'
+
+// @ts-ignore
 // eslint-disable-next-line import/order
 import Contextmenu from 'v-contextmenu-directive'
 

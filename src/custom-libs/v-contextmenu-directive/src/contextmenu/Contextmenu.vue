@@ -1,21 +1,3 @@
-<template>
-  <div class="v-contextmenu" 
-    v-show="status" 
-    :style="{
-      left: style.left,
-      top: style.top,
-    }"
-    @contextmenu.prevent
-  >
-    <ContextmenuContent 
-      :menus="menus" 
-      :isDark="isDark"
-      :subMenuPosition="style.subMenuPosition" 
-      :clickMenuItem="clickMenuItem" 
-    />
-  </div>
-</template>
-
 <script>
 import ContextmenuContent from './ContextmenuContent.vue'
 
@@ -26,7 +8,7 @@ const DIVIDER_HEIGHT = 11
 const SUB_MENU_WIDTH = 120
 
 export default {
-  name: 'v-contextmenu',
+  name: 'VContextmenu',
   components: {
     ContextmenuContent,
   },
@@ -59,7 +41,7 @@ export default {
   },
   data() {
     return {
-      status: false
+      status: false,
     }
   },
   computed: {
@@ -83,8 +65,8 @@ export default {
       const subMenuPosition = screenWidth <= left + maxMenuWidth ? 'right' : 'left'
 
       return {
-        left: left + 'px',
-        top: top + 'px',
+        left: `${left}px`,
+        top: `${top}px`,
         subMenuPosition,
       }
     },
@@ -92,12 +74,13 @@ export default {
   mounted() {
     this.$nextTick(() => this.status = true)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.body.removeChild(this.$el)
   },
   methods: {
     clickMenuItem(item) {
-      if(item.disable || item.children) return
+      if (item.disable || item.children)
+        return
 
       this.status = false
       item.action && item.action(this.el)
@@ -107,6 +90,25 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div
+    v-show="status"
+    class="v-contextmenu"
+    :style="{
+      left: style.left,
+      top: style.top,
+    }"
+    @contextmenu.prevent
+  >
+    <ContextmenuContent
+      :menus="menus"
+      :is-dark="isDark"
+      :sub-menu-position="style.subMenuPosition"
+      :click-menu-item="clickMenuItem"
+    />
+  </div>
+</template>
 
 <style lang="scss">
 .v-contextmenu {
